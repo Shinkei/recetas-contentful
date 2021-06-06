@@ -11,7 +11,10 @@ export async function getStaticProps() {
     content_type: 'receta',
   })
 
-  return { props: { recetas: response.items } }
+  return {
+    props: { recetas: response.items },
+    revalidate: 10, // Incremental Static Regeneration : representa en segundos cada cuanto next deve revisar por actualizaciones
+  }
 }
 
 export default function Recipes({ recetas }) {

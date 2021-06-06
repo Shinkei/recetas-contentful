@@ -30,11 +30,11 @@ export async function getStaticProps({ params: { slug } }) {
 
   return {
     props: { recipe: items[0] },
+    revalidate: 10, // Incremental Static Regeneration : representa en segundos cada cuanto next deve revisar por actualizaciones
   }
 }
 
 export default function RecipeDetails({ recipe }) {
-  console.log(recipe)
   const { featureImage, title, cookingTime, ingredients, method } =
     recipe.fields
   return (
@@ -48,14 +48,14 @@ export default function RecipeDetails({ recipe }) {
         <h2>{title}</h2>
       </div>
       <div className='info'>
-        <p>Takes about {cookingTime} mins. to cook</p>
-        <h3>Ingredients</h3>
+        <p>Toma cerca de {cookingTime} minutos en cocinar.</p>
+        <h3>Ingredientes</h3>
         {ingredients.map((ingredient) => (
           <span key={ingredient}>{ingredient}</span>
         ))}
       </div>
       <div className='method'>
-        <h3>Method:</h3>
+        <h3>Pasos:</h3>
         <div>{documentToReactComponents(method)}</div>
       </div>
       <style jsx>{`

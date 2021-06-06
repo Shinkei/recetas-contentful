@@ -27,11 +27,11 @@ function RecipeCard({ recipe }) {
       <div className='content'>
         <div className='info'>
           <h4>{title}</h4>
-          <p>Takes approx {cookingTime} min. to make</p>
+          <p>Toma aproximadamente {cookingTime} minutos</p>
         </div>
         <div className='actions'>
           <Link href={`/recipes/${slug}`}>
-            <a>Cook this</a>
+            <a>Ver Receta</a>
           </Link>
         </div>
       </div>
